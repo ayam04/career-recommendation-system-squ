@@ -2,21 +2,21 @@ import json
 import random
 
 def get_p_questions():
-    with open('p-questions.json', 'r') as file:
+    with open('Questions\p-questions.json', 'r') as file:
         questions = json.load(file)
     random_questions = random.sample(questions, 10)
     questions_answers_dict = {question: "" for question in random_questions}
     return questions_answers_dict
 
 def get_i_questions():
-    with open('i-questions.json', 'r') as file:
+    with open('Questions\i-questions.json', 'r') as file:
         questions = json.load(file)
     random_questions = random.sample(questions, 10)
     questions_answers_dict = {question: "" for question in random_questions}
     return questions_answers_dict
 
 def get_g_questions():
-    with open('g-questions.json', 'r') as file:
+    with open('Questions\g-questions.json', 'r') as file:
         questions = json.load(file)
     random_questions = random.sample(questions, 10)
     questions_answers_dict = {question: "" for question in random_questions}

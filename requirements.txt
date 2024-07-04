@@ -1,4 +1,5 @@
-streamlit
-langchain
 pandas
+streamlit
+streamlit_options_menu
+langchain
 huggingface_hub

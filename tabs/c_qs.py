@@ -4,8 +4,12 @@ from utils import *
 
 def show_c_qs():
     try:
-        if 'questions1' not in st.session_state:
-            st.session_state.questions1 = get_i_questions()
+        if st.session_state.user_data["edu"] == "in School right now":
+            if 'questions1' not in st.session_state:
+                st.session_state.questions1 = get_i_questions()
+        elif st.session_state.user_data["edu"] == "in University right now":
+            if 'questions1' not in st.session_state:
+                st.session_state.questions1 = get_g_questions()
 
         questions1 = st.session_state.questions1 if 'questions1' in st.session_state else []
 
@@ -24,4 +28,4 @@ def show_c_qs():
             st.success("Your answers have been saved. Please proceed to the next section.")
 
     except Exception as e:
-        st.exception(e)
+        st.error("Please complete the questions in User data.")

@@ -3,7 +3,7 @@ import tabs as pg
 import streamlit as st
 from streamlit_option_menu import option_menu
 
-pages = ["User Data", "Career Based Questions", "Personality Based Questions", "Report"]
+pages = ["User Data", "Personality Based Questions", "Career Based Questions", "Report"]
 
 with st.sidebar:
     selected = option_menu(
@@ -15,8 +15,8 @@ with st.sidebar:
 
 functions = {
     "User Data": pg.show_user_data,
-    "Career Based Questions": pg.show_c_qs,
     "Personality Based Questions": pg.show_p_qs,
+    "Career Based Questions": pg.show_c_qs,
     "Report": pg.show_report,
 }
 

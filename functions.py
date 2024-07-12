@@ -24,12 +24,24 @@ def get_report(user_data, c_qs_ans, p_qs_ans,):
     Start with greeting the student first. Then thank the student for taking this test. Then based on the data provided, recommend a career path for the student. End with a closing note.
     
     You should avoid using any bold words or any special characters.
-    You response should be at least 3 paragraphs of 4 to 5 lines each.
+    You response should be at least 3 paragraphs of 5 to 6 lines each lines each.
     Do not write anything before greetings.
+    
+    The first para should be 3 lines maximum.
+    The second para and third para should be 5 to 6 lines maximum.
+    
+    Also follow this json format:
+
+    {{"para1":"greetings to the user with their name \n content of the 1 para", "para2":"content of the 2 para","para3":"content of the 3 para","para4":"final closing statement to the user"}}
+
+    Do not respond with anything other than the single line json.
     """
     result = llm.generate([prompt])
-    response = result.generations[0][0].text.replace(prompt, "").strip().replace("\n\n", "\n")
-    print(response)
+    response = result.generations[0][0].text.replace(prompt, "").strip().replace("\n\n", "\n").strip()
+    response = re.sub(r'^.*?({.*?}).*$', r'\1', response)
+    # with open("response.json", "w") as file:
+    #     file.write(response)
+    # print(response)
     return response
 
-# get_report({"are you an extrovert?":"yes"}, {"are you good at football?":"yes"}, {"name": "John Doe", "age": 20, "edu": "in School right now", "interest": "playing football"})
+get_report({"name": "Ayam", "age": 20, "edu": "in School right now", "interest": "playing football"}, {"are you good at football?":"yes"}, {"are you an extrovert?":"yes"})

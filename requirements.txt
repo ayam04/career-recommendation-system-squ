@@ -1,5 +1,4 @@
 pandas
 streamlit
 streamlit_options_menu
-langchain
-huggingface_hub
+langchain_community==0.2.4

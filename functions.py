@@ -1,6 +1,7 @@
 import re
 import os
 import warnings
+from utils import clean_response
 from dotenv import load_dotenv
 from langchain_community.llms.huggingface_hub import HuggingFaceHub
 
@@ -10,7 +11,7 @@ load_dotenv()
 
 os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HF_API_KEY")
 
-llm = HuggingFaceHub(repo_id="mistralai/Mistral-7B-Instruct-v0.2", model_kwargs={"temperature": 0.5, "max_new_tokens": 25000})
+llm = HuggingFaceHub(repo_id="mistralai/Mistral-7B-Instruct-v0.2", model_kwargs={"temperature": 1, "max_new_tokens": 25000})
 
 def get_report(user_data, c_qs_ans, p_qs_ans,):
     prompt = f"""You are a professional Career Counsellor. You majorly use the student's biodata, the students answers to some career based questions and the student's answers to some personality based questions to recommend a career path. You have been given the biodata of a student. The student is {user_data['name']}, {user_data['age']} years old, {user_data['edu']}, and has interests in {user_data['interest']}.
@@ -32,16 +33,17 @@ def get_report(user_data, c_qs_ans, p_qs_ans,):
     
     Also follow this json format:
 
-    {{"para1":"greetings to the user with their name \n content of the 1 para", "para2":"content of the 2 para","para3":"content of the 3 para","para4":"final closing statement to the user"}}
+    {{"para1":"greetings to the user with their name \n content of the 1 para", "para2":"content of the 2 para","para3":"content of the 3 para","para4":"final closing statement to the user","word":"one word to describe the career path"}}
 
     Do not respond with anything other than the single line json.
     """
-    result = llm.generate([prompt])
-    response = result.generations[0][0].text.replace(prompt, "").strip().replace("\n\n", "\n").strip()
+    result = llm(prompt)
+    response = result.replace(prompt, "").strip().replace("\n\n", "\n").strip()
     response = re.sub(r'^.*?({.*?}).*$', r'\1', response)
-    # with open("response.json", "w") as file:
+    # with open("response.json", "w", encoding="utf-8") as file:
     #     file.write(response)
     # print(response)
-    return response
+    cln_response = clean_response(response)
+    return cln_response
 
 get_report({"name": "Ayam", "age": 20, "edu": "in School right now", "interest": "playing football"}, {"are you good at football?":"yes"}, {"are you an extrovert?":"yes"})

@@ -89,7 +89,7 @@ def get_images(query):
 
 def clean_response(response_text):
     json_objects = re.findall(r'\{.*?\}', response_text, re.DOTALL)
-    # print(json_objects)
+    print(json_objects)
     if len(json_objects) >= 2:
         cleaned_response = json_objects[:2]
         return cleaned_response

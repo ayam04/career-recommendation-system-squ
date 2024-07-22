@@ -6,7 +6,10 @@ import requests
 from dotenv import load_dotenv
 
 load_dotenv()
-api_key = os.getenv("PIX_API_KEY")
+
+pix_api_key = os.getenv("PIX_API_KEY")
+adz_app_key = os.getenv("ADZ_APP_KEY")
+adz_api_key = os.getenv("ADZ_API_KEY")
 
 picked_p_questions = set()
 picked_i_questions = set()
@@ -60,7 +63,7 @@ def get_g_questions():
 def get_images(query):
     base_url = "https://pixabay.com/api/"
     params = {
-        "key": api_key,
+        "key": pix_api_key,
         "q": query,
         "image_type": "photo",
         "lang": "en",
@@ -68,13 +71,13 @@ def get_images(query):
     }
     try:
         response = requests.get(base_url, params=params)
-        print(response.url)
+        # print(response.url)
         response.raise_for_status()
         data = response.json()
         hits = len(data["hits"])
         if data["totalHits"] > 0:
-            image_url_1 = data["hits"][random.randint(0,hits)]["largeImageURL"]
-            image_url_2 = data["hits"][random.randint(0,hits)]["largeImageURL"]
+            image_url_1 = data["hits"][random.randint(0,hits-1)]["largeImageURL"]
+            image_url_2 = data["hits"][random.randint(0,hits-1)]["largeImageURL"]
             return (image_url_1, image_url_2)
         else:
             print("No images found")
@@ -95,8 +98,34 @@ def clean_response(response_text):
         return cleaned_response
     else:
         print("Cleaning error")
-    
-# print(get_images("psychology"))
+
+def get_job_listings(query):
+    endpoint = 'https://api.adzuna.com/v1/api/jobs/gb/search/1'
+    params = {
+        'app_id': adz_app_key,
+        'app_key': adz_api_key,
+        'results_per_page': 2,
+        'what': query.strip(),
+    }
+
+    try:
+        response = requests.get(endpoint, params=params)
+        response.raise_for_status()
+        data = response.json()
+        job1 = data["results"][0]['redirect_url']
+        job2 = data["results"][1]['redirect_url']
+
+        return (job1, job2)
+
+    except requests.exceptions.HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+        return None
+    except Exception as err:
+        print(f"Other error occurred: {err}")
+        return None
+
 # print(get_p_questions())
 # print(get_i_questions())
 # print(get_g_questions())
+# print(get_images("psychology"))
+print(get_job_listings("Software engineering"))

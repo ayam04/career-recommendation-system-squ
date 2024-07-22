@@ -10,7 +10,7 @@ warnings.filterwarnings("ignore")
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEm_API_KEY"))
+genai.configure(api_key=os.getenv("GEM_API_KEY"))
 llm = genai.GenerativeModel("gemini-pro")
 
 # os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HF_API_KEY")

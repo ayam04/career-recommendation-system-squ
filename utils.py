@@ -3,13 +3,17 @@ import re
 import json
 import random
 import requests
+import streamlit as st
 from dotenv import load_dotenv
 
 load_dotenv()
 
-pix_api_key = os.getenv("PIX_API_KEY")
-adz_app_key = os.getenv("ADZ_APP_KEY")
-adz_api_key = os.getenv("ADZ_API_KEY")
+# pix_api_key = os.getenv("PIX_API_KEY")
+# adz_app_key = os.getenv("ADZ_APP_KEY")
+# adz_api_key = os.getenv("ADZ_API_KEY")
+pix_api_key = st.secrets["PIX_API_KEY"]
+adz_app_key = st.secrets["ADZ_APP_KEY"]
+adz_api_key = st.secrets["ADZ_API_KEY"]
 
 picked_p_questions = set()
 picked_i_questions = set()

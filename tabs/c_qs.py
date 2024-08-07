@@ -3,7 +3,6 @@ from utils import *
 
 def show_c_qs():
     try:
-        # Initialize 'messages' if it doesn't exist
         if "chat_messages" not in st.session_state:
             st.session_state.chat_messages = []
 
@@ -22,7 +21,6 @@ def show_c_qs():
             st.session_state.current_question = 0
 
         st.header("Career Based Questions:")
-        # Display chat messages from history on app rerun
         for message in st.session_state.chat_messages:
             with st.chat_message(message["role"]):
                 st.markdown(message["content"])
@@ -42,7 +40,6 @@ def show_c_qs():
                 st.session_state.current_question += 1
                 st.rerun()
 
-        # Display a message when all questions have been answered
         if st.session_state.current_question >= len(questions1):
             st.success("Thank you for answering all the questions!")
             # st.write("Here are your answers:")

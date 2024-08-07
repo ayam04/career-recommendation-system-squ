@@ -1,17 +1,22 @@
-
 import tabs as pg
 import streamlit as st
 from streamlit_option_menu import option_menu
+
+if 'first_visit' not in st.session_state:
+    st.session_state.first_visit = True
 
 pages = ["User Data", "Personality Based Questions", "Career Based Questions", "Report"]
 
 with st.sidebar:
     selected = option_menu(
         "Navigate to",
-        options = pages,
+        options=pages,
         # menu_icon="cast",
-        default_index=0,
-        )
+        default_index=0 if st.session_state.first_visit else st.session_state.selected_index,
+    )
+
+st.session_state.selected_index = pages.index(selected)
+st.session_state.first_visit = False
 
 functions = {
     "User Data": pg.show_user_data,

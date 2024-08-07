@@ -1,6 +1,7 @@
 import re
 import os
 import warnings
+import streamlit as st
 from utils import clean_response
 from dotenv import load_dotenv
 from langchain_community.llms.huggingface_hub import HuggingFaceHub
@@ -10,8 +11,10 @@ warnings.filterwarnings("ignore")
 
 load_dotenv()
 
-genai.configure(api_key=os.getenv("GEM_API_KEY"))
-llm = genai.GenerativeModel("gemini-pro")
+# genai.configure(api_key=os.getenv("GEM_API_KEY"))
+genai.configure(api_key=st.secrets["GEM_API_KEY"])
+
+llm = genai.GenerativeModel("gemini-1.5-flash")
 
 # os.environ["HUGGINGFACEHUB_API_TOKEN"] = os.getenv("HF_API_KEY")
 # llm = HuggingFaceHub(repo_id="mistralai/Mistral-7B-Instruct-v0.1", model_kwargs={"temperature": 1, "max_new_tokens": 30000})

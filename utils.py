@@ -4,9 +4,9 @@ import json
 import random
 import requests
 import streamlit as st
-from dotenv import load_dotenv
+# from dotenv import load_dotenv
 
-load_dotenv()
+# load_dotenv()
 
 # pix_api_key = os.getenv("PIX_API_KEY")
 # adz_app_key = os.getenv("ADZ_APP_KEY")

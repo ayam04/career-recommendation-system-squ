@@ -1,15 +1,15 @@
 import re
-import os
+# import os
 import warnings
 import streamlit as st
-from utils import clean_response
-from dotenv import load_dotenv
-from langchain_community.llms.huggingface_hub import HuggingFaceHub
+# from utils import clean_response
+# from dotenv import load_dotenv
+# from langchain_community.llms.huggingface_hub import HuggingFaceHub
 import google.generativeai as genai
 
 warnings.filterwarnings("ignore")
 
-load_dotenv()
+# load_dotenv()
 
 # genai.configure(api_key=os.getenv("GEM_API_KEY"))
 genai.configure(api_key=st.secrets["GEM_API_KEY"])
@@ -49,7 +49,7 @@ def get_report(user_data, c_qs_ans, p_qs_ans,):
     response = re.sub(r'^.*?({.*?}).*$', r'\1', response)
     # with open("response.json", "w", encoding="utf-8") as file:
     #     file.write(response)
-    print(response)
+    # print(response)
     # response = clean_response(response)
     return response
 

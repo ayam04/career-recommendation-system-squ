@@ -43,11 +43,11 @@ def show_c_qs():
         if st.session_state.current_question >= len(questions1):
             st.success("Thank you for answering all the questions!")
             # st.write("Here are your answers:")
-            st.write(st.session_state.answers_dict1)
+            # st.write(st.session_state.answers_dict1)
             # st.success("Your answers have been saved. Please proceed to the next section.")
 
     except Exception as e:
-        print(e)
+        # print(e)
         st.error("Please complete the questions in User data.")
 
 show_c_qs()

@@ -32,9 +32,9 @@ def show_report():
                     st.link_button("Job 1", job1, type="secondary")
                     st.link_button("Job 2", job2, type="secondary")
             except Exception as e:
-                print(e)
-                st.error(f"An error occurred while generating the report: {e}")
+                # print(e)
+                st.error(f"An error occurred while generating the report. Please try again later.")
 
     except Exception as e:
-        print(e)
+        # print(e)
         st.error(f"Please complete all the assessment questions: {e}")

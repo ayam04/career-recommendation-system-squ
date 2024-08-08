@@ -72,7 +72,7 @@ def show_user_data():
         if entry_check(data)==6:
             if is_valid_email(data["email"]):
                 st.session_state.user_data = data
-                st.write(st.session_state.user_data)
+                # st.write(st.session_state.user_data)
                 st.success("Your details have been saved. Please proceed to the next section.")
             else:
                 st.error("Please enter a valid email address.")

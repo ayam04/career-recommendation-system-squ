@@ -37,4 +37,4 @@ def show_report():
 
     except Exception as e:
         print(e)
-        st.error(f"Please complete all the assessment questions: {e}")
+        st.error(f"Please complete all the assessment questions.")

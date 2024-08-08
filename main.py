@@ -13,6 +13,7 @@ with st.sidebar:
         options=pages,
         # menu_icon="cast",
         default_index=0 if st.session_state.first_visit else st.session_state.selected_index,
+        expanded=True,
     )
 
 st.session_state.selected_index = pages.index(selected)

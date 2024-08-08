@@ -21,7 +21,7 @@ def show_p_qs():
         if st.button('Submit', key="submit_p_qs"):
             for question in questions2:
                 st.session_state.answers_dict2[question] = temporary_answers_dict2.get(question, "")
-            st.success("Your answers have been saved. Please proceed to the next section.")
+            st.success("Your answers have been saved. Please proceed to the Career Based Questions.")
             # st.write(st.session_state.answers_dict2)
     except Exception as e:
         st.exception(e)

@@ -41,7 +41,7 @@ def show_c_qs():
                 st.rerun()
 
         if st.session_state.current_question >= len(questions1):
-            st.success("Thank you for answering all the questions!")
+            st.success("Thank you for answering all the questions! You can generate your Career Report now. ")
             # st.write("Here are your answers:")
             # st.write(st.session_state.answers_dict1)
             # st.success("Your answers have been saved. Please proceed to the next section.")

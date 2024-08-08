@@ -73,7 +73,7 @@ def show_user_data():
             if is_valid_email(data["email"]):
                 st.session_state.user_data = data
                 # st.write(st.session_state.user_data)
-                st.success("Your details have been saved. Please proceed to the next section.")
+                st.success("Your details have been saved. Please proceed to the Personality Based Questions.")
             else:
                 st.error("Please enter a valid email address.")
         else:

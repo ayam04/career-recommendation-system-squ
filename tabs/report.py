@@ -36,5 +36,5 @@ def show_report():
                 st.error(f"An error occurred while generating the report. Please try again later.")
 
     except Exception as e:
-        # print(e)
+        print(e)
         st.error(f"Please complete all the assessment questions: {e}")

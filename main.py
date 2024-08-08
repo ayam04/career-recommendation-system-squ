@@ -2,6 +2,15 @@ import tabs as pg
 import streamlit as st
 from streamlit_option_menu import option_menu
 
+style = """
+<style>
+# MainMenu {visibility: hidden;}
+footer {visibility: hidden;}
+header {visibility: hidden;}
+</style>
+"""
+st.markdown(style, unsafe_allow_html=True)
+
 if 'first_visit' not in st.session_state:
     st.session_state.first_visit = True
 

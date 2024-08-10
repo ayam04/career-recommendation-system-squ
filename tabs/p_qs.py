@@ -22,7 +22,7 @@ def show_p_qs():
             )
 
             if selected_answer == "Other (please specify)":
-                custom_answer = st.text_input(key=f"custom_input_{idx}")
+                custom_answer = st.text_input(key=f"custom_input_{idx}", label=f"Your answer for '{question}'")
                 temporary_answers_dict2[question] = custom_answer
             else:
                 temporary_answers_dict2[question] = selected_answer

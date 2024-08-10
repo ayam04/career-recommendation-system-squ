@@ -1,11 +1,12 @@
 import re
-# import os
 import warnings
 import streamlit as st
+import google.generativeai as genai
+from PyPDF2 import PdfReader
+# import os
 # from utils import clean_response
 # from dotenv import load_dotenv
 # from langchain_community.llms.huggingface_hub import HuggingFaceHub
-import google.generativeai as genai
 
 warnings.filterwarnings("ignore")
 
@@ -21,7 +22,7 @@ llm = genai.GenerativeModel("gemini-1.5-flash")
 
 def get_report(user_data, c_qs_ans, p_qs_ans,):
     prompt = f"""You are a professional Career Counsellor. You majorly use the student's biodata, the students answers to some career based questions and the student's answers to some personality based questions to recommend a career path. You have been given the biodata of a student. The student is {user_data['name']}, {user_data['age']} years old, {user_data['edu']}, and has interests in {user_data['interest']}.
-    The student has uploaded their grades. The student answers to the career based questions are: {c_qs_ans}.
+    The student has also uploaded a CV/Grade pdf having this test: {user_data["pdf_text"]}. The student answers to the career based questions are: {c_qs_ans}.
     The student's answers to the personality based questions are: {p_qs_ans}.
     
     Based on this information, recommend a career path for the student. Give some consideration to the user's interests too.
@@ -53,4 +54,13 @@ def get_report(user_data, c_qs_ans, p_qs_ans,):
     # response = clean_response(response)
     return response
 
+def extract_pdf_text(pdf_file):
+    pdf_reader = PdfReader(pdf_file)
+    text = ""
+    for page_num in range(len(pdf_reader.pages)):
+        page = pdf_reader.pages[page_num]
+        text += page.extract_text()
+    return text
+
+# extract_pdf_text("sample.pdf")
 # get_report({"name": "Ayam", "age": 20, "edu": "in School right now", "interest": "playing football"}, {"are you good at football?":"yes"}, {"are you an extrovert?":"yes"})

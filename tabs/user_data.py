@@ -1,5 +1,6 @@
 import streamlit as st
 import re
+from functions import extract_pdf_text
 
 def get_name():
     name = st.text_input("Enter your name:")
@@ -23,8 +24,8 @@ def get_interest():
     interest = st.text_input("Do you have any specific interests:")
     return interest
 
-def get_grades():
-    grade = st.file_uploader("Upload your grades here in a PDF or Excel sheet:", type=["pdf", "xlsx", "xls", "csv"])
+def get_pdf_text():
+    grade = st.file_uploader("Upload your CV or Grades PDF here.", type=["pdf"])
     return grade
 
 def is_valid_email(email):
@@ -56,7 +57,7 @@ def show_user_data():
     with col2:
         email = get_email()
         interest = get_interest()
-        grades = get_grades()
+        pdf_text = get_pdf_text()
     
     if st.button("Submit"):
 
@@ -66,7 +67,7 @@ def show_user_data():
             "email": email,
             "edu": edu,
             "interest": interest,
-            "grades": grades
+            "pdf_text": extract_pdf_text(pdf_text),
         }
 
         if entry_check(data)==6:

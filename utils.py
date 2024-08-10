@@ -24,13 +24,14 @@ def get_p_questions():
     with open('Questions/p-questions.json', 'r') as file:
         questions = json.load(file)
     
-    available_questions = [q for q in questions if q not in picked_p_questions]
+    available_questions = {q: a for q, a in questions.items() if q not in picked_p_questions}
+    
     if len(available_questions) < 10:
         print("Not enough new questions available.")
         return None
     
-    random_questions = random.sample(available_questions, 10)
-    picked_p_questions.update(random_questions)
+    random_questions = dict(random.sample(list(available_questions.items()), 10))
+    picked_p_questions.update(random_questions.keys())
     
     return random_questions
 

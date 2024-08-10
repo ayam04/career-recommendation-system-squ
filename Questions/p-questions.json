@@ -1,52 +1,178 @@
-[
-    "Do you feel more energized after spending time with a group of people or after spending time alone?",
-    "When approaching a task, do you prefer to focus on the details or the big picture?",
-    "Do you often rely on facts and past experiences, or do you trust your instincts and intuition?",
-    "When making decisions, do you prioritize logic and objectivity or personal values and harmony?",
-    "Do you prefer to plan things in advance, or do you like to stay flexible and adapt as you go?",
-    "Are you more drawn to practical tasks or imaginative ideas?",
-    "Do you find it easier to express yourself verbally or in writing?",
-    "Do you enjoy spontaneous adventures or carefully planned trips?",
-    "Do you prefer to follow a structured routine or go with the flow?",
-    "Do you find satisfaction in completing tasks or in starting new projects?",
-    "Do you tend to think about the future or focus on the present moment?",
-    "Do you value traditions and established methods or enjoy experimenting with new approaches?",
-    "Are you more comfortable in a well-organized environment or a relaxed, casual setting?",
-    "Do you prefer to stick to what you know or explore uncharted territories?",
-    "Do you feel more accomplished when you achieve a goal or when you help someone else achieve theirs?",
-    "Do you enjoy discussing abstract concepts or practical applications?",
-    "Do you make decisions quickly and confidently or take your time to consider all options?",
-    "Do you find it easier to empathize with others or analyze situations objectively?",
-    "Do you prefer a busy social calendar or quiet evenings at home?",
-    "Do you enjoy working on multiple projects at once or focusing on one task at a time?",
-    "Do you find comfort in routine or excitement in variety?",
-    "Do you prefer to work independently or in a team?",
-    "Do you enjoy solving complex problems or coming up with creative ideas?",
-    "Do you feel more comfortable with clear instructions or the freedom to explore?",
-    "Do you prefer to think things through before acting or dive right in?",
-    "Do you enjoy organizing events or participating in them?",
-    "Do you find it easier to follow a set path or create your own?",
-    "Do you prefer certainty and predictability or change and unpredictability?",
-    "Do you enjoy detailed planning or improvising as you go?",
-    "Do you find it easier to understand concrete facts or abstract theories?",
-    "Do you feel more at ease in a structured environment or a flexible one?",
-    "Do you enjoy working with your hands or your mind?",
-    "Do you prefer to have a clear schedule or the freedom to choose your activities?",
-    "Do you find it easier to connect with others through shared experiences or deep conversations?",
-    "Do you enjoy creating detailed plans or exploring new possibilities?",
-    "Do you find satisfaction in completing tasks or starting new projects?",
-    "Do you prefer to focus on the present moment or think about the future?",
-    "Do you enjoy working on practical tasks or exploring imaginative ideas?",
-    "Do you find it easier to express yourself through words or actions?",
-    "Do you prefer to follow established methods or experiment with new approaches?",
-    "Do you enjoy a well-organized environment or a relaxed, casual setting?",
-    "Do you feel more accomplished when you achieve your goals or help others achieve theirs?",
-    "Do you enjoy discussing practical applications or abstract concepts?",
-    "Do you make decisions quickly or take your time to consider all options?",
-    "Do you find it easier to empathize with others or analyze situations objectively?",
-    "Do you prefer a busy social calendar or quiet evenings at home?",
-    "Do you enjoy working on multiple projects at once or focusing on one task at a time?",
-    "Do you find comfort in routine or excitement in variety?",
-    "Do you prefer to work independently or in a team?",
-    "Do you enjoy solving complex problems or coming up with creative ideas?"
-]
+{
+    "Do you feel more energized after spending time with a group of people or after spending time alone?": [
+      "Group of people",
+      "Alone"
+    ],
+    "When approaching a task, do you prefer to focus on the details or the big picture?": [
+      "Details",
+      "Big picture"
+    ],
+    "Do you often rely on facts and past experiences, or do you trust your instincts and intuition?": [
+      "Facts and past experiences",
+      "Instincts and intuition"
+    ],
+    "When making decisions, do you prioritize logic and objectivity or personal values and harmony?": [
+      "Logic and objectivity",
+      "Personal values and harmony"
+    ],
+    "Do you prefer to plan things in advance, or do you like to stay flexible and adapt as you go?": [
+      "Plan in advance",
+      "Stay flexible"
+    ],
+    "Are you more drawn to practical tasks or imaginative ideas?": [
+      "Practical tasks",
+      "Imaginative ideas"
+    ],
+    "Do you find it easier to express yourself verbally or in writing?": [
+      "Verbally",
+      "In writing"
+    ],
+    "Do you enjoy spontaneous adventures or carefully planned trips?": [
+      "Spontaneous adventures",
+      "Carefully planned trips"
+    ],
+    "Do you prefer to follow a structured routine or go with the flow?": [
+      "Structured routine",
+      "Go with the flow"
+    ],
+    "Do you find satisfaction in completing tasks or in starting new projects?": [
+      "Completing tasks",
+      "Starting new projects"
+    ],
+    "Do you tend to think about the future or focus on the present moment?": [
+      "Think about the future",
+      "Focus on the present moment"
+    ],
+    "Do you value traditions and established methods or enjoy experimenting with new approaches?": [
+      "Traditions and established methods",
+      "Experimenting with new approaches"
+    ],
+    "Are you more comfortable in a well-organized environment or a relaxed, casual setting?": [
+      "Well-organized environment",
+      "Relaxed, casual setting"
+    ],
+    "Do you prefer to stick to what you know or explore uncharted territories?": [
+      "Stick to what you know",
+      "Explore uncharted territories"
+    ],
+    "Do you feel more accomplished when you achieve a goal or when you help someone else achieve theirs?": [
+      "Achieve a goal",
+      "Help someone else achieve theirs"
+    ],
+    "Do you enjoy discussing abstract concepts or practical applications?": [
+      "Abstract concepts",
+      "Practical applications"
+    ],
+    "Do you make decisions quickly and confidently or take your time to consider all options?": [
+      "Quickly and confidently",
+      "Take your time"
+    ],
+    "Do you feel more comfortable with clear instructions or the freedom to explore?": [
+      "Clear instructions",
+      "Freedom to explore"
+    ],
+    "Do you prefer to think things through before acting or dive right in?": [
+      "Think things through",
+      "Dive right in"
+    ],
+    "Do you enjoy organizing events or participating in them?": [
+      "Organizing events",
+      "Participating in them"
+    ],
+    "Do you find it easier to follow a set path or create your own?": [
+      "Follow a set path",
+      "Create your own"
+    ],
+    "Do you prefer certainty and predictability or change and unpredictability?": [
+      "Certainty and predictability",
+      "Change and unpredictability"
+    ],
+    "Do you enjoy detailed planning or improvising as you go?": [
+      "Detailed planning",
+      "Improvising as you go"
+    ],
+    "Do you find it easier to understand concrete facts or abstract theories?": [
+      "Concrete facts",
+      "Abstract theories"
+    ],
+    "Do you feel more at ease in a structured environment or a flexible one?": [
+      "Structured environment",
+      "Flexible environment"
+    ],
+    "Do you enjoy working with your hands or your mind?": [
+      "Hands",
+      "Mind"
+    ],
+    "Do you prefer to have a clear schedule or the freedom to choose your activities?": [
+      "Clear schedule",
+      "Freedom to choose"
+    ],
+    "Do you find it easier to connect with others through shared experiences or deep conversations?": [
+      "Shared experiences",
+      "Deep conversations"
+    ],
+    "Do you enjoy creating detailed plans or exploring new possibilities?": [
+      "Creating detailed plans",
+      "Exploring new possibilities"
+    ],
+    "Do you find satisfaction in completing tasks or starting new projects?": [
+      "Completing tasks",
+      "Starting new projects"
+    ],
+    "Do you prefer to focus on the present moment or think about the future?": [
+      "Focus on the present moment",
+      "Think about the future"
+    ],
+    "Do you enjoy working on practical tasks or exploring imaginative ideas?": [
+      "Practical tasks",
+      "Imaginative ideas"
+    ],
+    "Do you find it easier to express yourself through words or actions?": [
+      "Words",
+      "Actions"
+    ],
+    "Do you prefer to follow established methods or experiment with new approaches?": [
+      "Established methods",
+      "Experiment with new approaches"
+    ],
+    "Do you enjoy a well-organized environment or a relaxed, casual setting?": [
+      "Well-organized environment",
+      "Relaxed, casual setting"
+    ],
+    "Do you feel more accomplished when you achieve your goals or help others achieve theirs?": [
+      "Achieve your goals",
+      "Help others achieve theirs"
+    ],
+    "Do you enjoy discussing practical applications or abstract concepts?": [
+      "Practical applications",
+      "Abstract concepts"
+    ],
+    "Do you make decisions quickly or take your time to consider all options?": [
+      "Quickly",
+      "Take your time"
+    ],
+    "Do you find it easier to empathize with others or analyze situations objectively?": [
+      "Empathize with others",
+      "Analyze situations objectively"
+    ],
+    "Do you prefer a busy social calendar or quiet evenings at home?": [
+      "Busy social calendar",
+      "Quiet evenings at home"
+    ],
+    "Do you enjoy working on multiple projects at once or focusing on one task at a time?": [
+      "Multiple projects",
+      "One task at a time"
+    ],
+    "Do you find comfort in routine or excitement in variety?": [
+      "Comfort in routine",
+      "Excitement in variety"
+    ],
+    "Do you prefer to work independently or in a team?": [
+      "Independently",
+      "In a team"
+    ],
+    "Do you enjoy solving complex problems or coming up with creative ideas?": [
+      "Solving complex problems",
+      "Coming up with creative ideas"
+    ]
+  }

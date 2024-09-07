@@ -4,6 +4,10 @@ import json
 import random
 import requests
 import streamlit as st
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+from email.mime.image import MIMEImage  # Add this import
 # from dotenv import load_dotenv
 
 # load_dotenv()
@@ -129,8 +133,82 @@ def get_job_listings(query):
         print(f"Other error occurred: {err}")
         return None
 
+def send_email(recipient_email, subject, body, image_urls):
+    sender_email = st.secrets["SENDER_EMAIL"]
+    sender_password = st.secrets["SENDER_PASSWORD"]
+
+    message = MIMEMultipart("related")
+    message["From"] = sender_email
+    message["To"] = recipient_email
+    message["Subject"] = subject
+
+    # HTML email body with updated CSS for colors
+    html_body = f"""
+    <html>
+    <head>
+        <style>
+            body {{
+                background-color: black;
+                color: white;
+                font-family: Arial, sans-serif;
+                text-align: justify;
+            }}
+            .content {{
+                margin: 20px;
+            }}
+            .image {{
+                display: block;
+                margin: 20px auto;
+                max-width: 100%;
+            }}
+            a {{
+                color: #1e90ff;  /* Change this to your desired link color */
+                text-decoration: none;
+            }}
+            a:hover {{
+                color: #ff4500;  /* Change the hover color if needed */
+            }}
+        </style>
+    </head>
+    <body>
+        <div class="content">
+            {body}
+        </div>
+    </body>
+    </html>
+    """
+
+    message.attach(MIMEText(html_body, "html"))
+
+    # Attach images
+    for i, image_url in enumerate(image_urls):
+        response = requests.get(image_url)
+        img_data = response.content
+        image = MIMEImage(img_data)
+        image.add_header("Content-ID", f"<image{i+1}>")
+        message.attach(image)
+
+    try:
+        with smtplib.SMTP("smtp.gmail.com", 587) as server:
+            server.set_debuglevel(1)  # Enable debug output for the SMTP connection
+            server.starttls()
+            server.login(sender_email, sender_password)
+            server.sendmail(sender_email, recipient_email, message.as_string())
+        return True
+    except smtplib.SMTPAuthenticationError as e:
+        print(f"SMTP Authentication Error: {e}")
+        return False
+    except smtplib.SMTPException as e:
+        print(f"SMTP Error: {e}")
+        return False
+    except Exception as e:
+        print(f"General Error: {e}")
+        return False
+
+
 # print(get_p_questions())
 # print(get_i_questions())
 # print(get_g_questions())
 # print(get_images("psychology"))
 # print(get_job_listings("Software engineering"))
+

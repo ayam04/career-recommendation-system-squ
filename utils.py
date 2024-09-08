@@ -18,6 +18,8 @@ from email.mime.image import MIMEImage  # Add this import
 pix_api_key = st.secrets["PIX_API_KEY"]
 adz_app_key = st.secrets["ADZ_APP_KEY"]
 adz_api_key = st.secrets["ADZ_API_KEY"]
+google_api_key=st.secrets["GOOGLE_API_KEY"]
+google_cse_id=st.secrets["GOOGLE_CSE_ID"]
 
 picked_p_questions = set()
 picked_i_questions = set()
@@ -142,43 +144,7 @@ def send_email(recipient_email, subject, body, image_urls):
     message["To"] = recipient_email
     message["Subject"] = subject
 
-    # HTML email body with updated CSS for colors
-    html_body = f"""
-    <html>
-    <head>
-        <style>
-            body {{
-                background-color: black;
-                color: white;
-                font-family: Arial, sans-serif;
-                text-align: justify;
-            }}
-            .content {{
-                margin: 20px;
-            }}
-            .image {{
-                display: block;
-                margin: 20px auto;
-                max-width: 100%;
-            }}
-            a {{
-                color: #1e90ff;  /* Change this to your desired link color */
-                text-decoration: none;
-            }}
-            a:hover {{
-                color: #ff4500;  /* Change the hover color if needed */
-            }}
-        </style>
-    </head>
-    <body>
-        <div class="content">
-            {body}
-        </div>
-    </body>
-    </html>
-    """
-
-    message.attach(MIMEText(html_body, "html"))
+    message.attach(MIMEText(body, "html"))
 
     # Attach images
     for i, image_url in enumerate(image_urls):
@@ -204,11 +170,67 @@ def send_email(recipient_email, subject, body, image_urls):
     except Exception as e:
         print(f"General Error: {e}")
         return False
+import requests
 
+def get_job_listings_google(query):
+    """
+    Function to search for job listings using Google Custom Search API and return the top two search result URLs.
 
-# print(get_p_questions())
+    Parameters:
+    - query: The search query string
+    - api_key: Your Google Custom Search API key
+    - cse_id: Your Custom Search Engine ID
+
+    Returns:
+    - Tuple of URLs of the top search results
+    """
+    endpoint = 'https://www.googleapis.com/customsearch/v1'
+    params = {
+        'key': google_api_key,
+        'cx': google_cse_id,
+        'q': query.strip(),
+        'num': 2  # Number of results to return
+    }
+
+    try:
+        response = requests.get(endpoint, params=params)
+        response.raise_for_status()  # Raise an error for bad HTTP status codes
+        data = response.json()
+
+        # Extract URLs of the top two results
+        job1 = data["items"][0]['link'] if 'items' in data and len(data['items']) > 0 else None
+        job2 = data["items"][1]['link'] if 'items' in data and len(data['items']) > 1 else None
+
+        return (job1, job2)
+
+    except requests.exceptions.HTTPError as http_err:
+        print(f"HTTP error occurred: {http_err}")
+        return None
+    except Exception as err:
+        print(f"Other error occurred: {err}")
+        return None
+
+def read_template(file, report, job1, job2, job3, job4):
+    with open(file, encoding='utf-8') as f:
+        data = f.read()
+
+    # Format the template with the report data and job links
+    formatted_data = data.format(
+        para1=report["para1"],
+        para2=report["para2"],
+        para3=report["para3"],
+        para4=report["para4"],
+        job1=job1,
+        job2=job2,
+        job3=job3,
+        job4=job4
+    )
+
+    return formatted_data
+
+# print(get_p_questions())write 
 # print(get_i_questions())
 # print(get_g_questions())
 # print(get_images("psychology"))
 # print(get_job_listings("Software engineering"))
-
+# print(read_template('email_template/template.html'))

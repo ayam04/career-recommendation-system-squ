@@ -56,6 +56,7 @@ def show_report():
                             p {{
                                 line-height: 1.7;
                                 font-size: 17px;
+                                font-color: white;
                             }}
                             h2 {{
                                 color: #ffdd57;
